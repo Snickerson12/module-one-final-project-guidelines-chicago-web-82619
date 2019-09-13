@@ -44,6 +44,7 @@ def welcome
 end 
 
 def main_menu
+  system("clear")
   greeting = "Please select a search option!"
   PROMPT.select(greeting) do |menu|
     menu.choice "by summoner name", 1
@@ -95,6 +96,7 @@ def lookup_summoner(summoner_name)
 end
 
 def search_by_summoner
+  system("clear")
   message = "Please enter a summoner name."
   summoner_name = PROMPT.ask(message, required: true, convert: :string)
   summoner = lookup_summoner(summoner_name)
@@ -140,6 +142,7 @@ def search_by_summoner
 end
 
 def search_by_champion
+  system("clear")
   message = "Please enter a champion name."
   champion_name = PROMPT.ask(message, required: true, convert: :string)
   champion = Champion.find_by(name: champion_name)
@@ -169,6 +172,7 @@ def search_by_champion
 end
 
 def search_database
+  system("clear")
   while true  
     instructions = "What would you like to know?"
     choice = PROMPT.select(instructions) do |menu|
