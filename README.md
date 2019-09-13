@@ -14,7 +14,7 @@ Overview:
 
   By utilizing tty prompt, lolshark users can select through various menus and input specific summoner names to retrieve desired information. Entering a summoner name allows users to lookup and view statistics specific to their League of Legends account. Entering a champion name prompts a different menu with game data for the desired champion.
 
-  Currently this application is updated through champion #145 - Qiyana introduce in patch 9.13. 
+  Currently this application is updated through champion #145 - Qiyana introduced in patch 9.13. Update patch constant for updated champion list from ddragon.
 
 Input Notes
 
