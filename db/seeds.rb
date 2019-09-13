@@ -5,12 +5,11 @@ require 'pry'
 require_relative "../config/environment.rb"
 
 ############ CONSTANTS ############
-API_KEY = "RGAPI-07aafdc9-c921-43d8-adfa-af206e120173"
+API_KEY = "RGAPI-42a2e83d-6765-4793-8d65-6e7420b2cd61"
 REGION = 'na1'
 PATCH_NUMBER = '9.17.1'
 TIER = 'SILVER'
 DIVISION = 'I'
-#use fresh API key before presentation!!!!!!!
 ###################################
 
 ############ METHODS ############
