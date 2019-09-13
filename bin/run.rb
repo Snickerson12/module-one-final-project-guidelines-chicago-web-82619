@@ -3,47 +3,78 @@ require 'tty-prompt'
 require 'colorize'
 require_relative '../db/seeds.rb'
 
-################ CONSTANTS ###############
+################ GLOBALS ###############
 PROMPT = TTY::Prompt.new(active_color: :bright_white)
-##########################################
+@shark_line0 = "                                             @@@@@@@@@    \n"
+@shark_line1 = "                              @@@@@@@@@@@@@@@@@@@@@@      \n"
+@shark_line2 = "                          @@@@@@@@@@@@@@@@@@@@@@@@@       \n"
+@shark_line3 = "                        @@@@@@@@@@@@@@@@@@@@@@@@@@@@      \n"
+@shark_line4 = "                     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     \n"
+@shark_line5 = "                     @@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@@.   \n"
+@shark_line6 = "                             @@@@@@@@  @@@@@@@@@@@@@@@    \n"
+@shark_line7 = "                               #@@@@     @@   @@@@@@@@    \n"
+@shark_line8 = "                             @@@@@@@           @@@@@@@    \n"
+@shark_line9 = "                            @@@@#              @@@@@@     \n"
+@shark_line10 = "                           @@.                 @@@@@/     \n"
+@shark_line11 = "                          @      @@@        %@@@@@@       \n"
+@shark_line12 = "                                    @@@     .@@@@@        \n"
+@shark_line13 = "                                      @@@@@@@@@@@         \n"
+@shark_line14 = "                                       @@@@@(@            \n"
+@shark_line15 = "                                       @@@@               \n"
+@shark_line16 = "                                       @@@                \n"
+@shark_line17 = "                                      @@@                 \n"
+@shark_line18 = "                                   @@                    \n"
+########################################
 
 ########## HELPER METHODS - BEG ##########
 
 def welcome
-  refresh                   
-  message = "Welcome to LolShark, the #1 stats CLI for League of Legends!".colorize(:color => :light_blue).on_light_white
+  swimmy_shark                   
+  message = "Welcome to LolShark, the #1 stats CLI for League of Legends!".colorize(:color => :white).on_blue
   PROMPT.say(message)
-  sleep(2)
+  sleep(1)
 end 
+
+def swimmy_shark
+  20.times {
+    sleep(0.05)
+    system("clear")
+    shark = @shark_line0 + @shark_line1 + @shark_line2 + @shark_line3 + @shark_line4 + @shark_line5 + @shark_line6 + @shark_line7 + @shark_line8 + @shark_line9 + @shark_line10 + @shark_line11 + @shark_line12 + @shark_line13 + @shark_line14 + @shark_line15 + @shark_line16 + @shark_line17 + @shark_line18
+    shark = shark.colorize(:color => :light_blue)
+    PROMPT.say(shark)
+    @shark_line0 = @shark_line0[1..-1]
+    @shark_line1 = @shark_line1[1..-1]
+    @shark_line2 = @shark_line2[1..-1]
+    @shark_line3 = @shark_line3[1..-1]
+    @shark_line4 = @shark_line4[1..-1]
+    @shark_line5 = @shark_line5[1..-1]
+    @shark_line6 = @shark_line6[1..-1]
+    @shark_line7 = @shark_line7[1..-1]
+    @shark_line8 = @shark_line8[1..-1]
+    @shark_line9 = @shark_line9[1..-1]
+    @shark_line10 = @shark_line10[1..-1]
+    @shark_line11 = @shark_line11[1..-1]
+    @shark_line12 = @shark_line12[1..-1]
+    @shark_line13 = @shark_line13[1..-1]
+    @shark_line14 = @shark_line14[1..-1]
+    @shark_line15 = @shark_line15[1..-1]
+    @shark_line16 = @shark_line16[1..-1]
+    @shark_line17 = @shark_line17[1..-1]
+    @shark_line18 = @shark_line18[1..-1]
+  }
+end
 
 def refresh
   system("clear")
-  line0 = "                         @@@@@@@@@    \n".colorize(:color => :light_blue)
-  line1 = "          @@@@@@@@@@@@@@@@@@@@@@      \n".colorize(:color => :light_blue)
-  line2 = "      @@@@@@@@@@@@@@@@@@@@@@@@@       \n".colorize(:color => :light_blue)
-  line3 = "    @@@@@@@@@@@@@@@@@@@@@@@@@@@@      \n".colorize(:color => :light_blue)
-  line4 = " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     \n".colorize(:color => :light_blue)
-  line5 = " @@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@@.   \n".colorize(:color => :light_blue)
-  line6 = "         @@@@@@@@  @@@@@@@@@@@@@@@    \n".colorize(:color => :light_blue)
-  line7 = "           #@@@@     @@   @@@@@@@@    \n".colorize(:color => :light_blue)
-  line8 = "         @@@@@@@           @@@@@@@    \n".colorize(:color => :light_blue)
-  line9 = "        @@@@#              @@@@@@     \n".colorize(:color => :light_blue)
-  line10 = "       @@.                 @@@@@/     \n".colorize(:color => :light_blue)
-  line11 = "      @      @@@        %@@@@@@       \n".colorize(:color => :light_blue)
-  line12 = "                @@@     .@@@@@        \n".colorize(:color => :light_blue)
-  line13 = "                  @@@@@@@@@@@         \n".colorize(:color => :light_blue)
-  line14 = "                   @@@@@(@            \n".colorize(:color => :light_blue)
-  line15 = "                   @@@@               \n".colorize(:color => :light_blue)
-  line16 = "                   @@@                \n".colorize(:color => :light_blue)
-  line17 = "                  @@@                 \n".colorize(:color => :light_blue)
-  line18 = "               @@                    \n".colorize(:color => :light_blue)
-  shark = line0 + line1 + line2+ line3 + line4 + line5 + line6 + line7 + line8 + line9 + line10 + line11 + line12 + line13 + line14 + line15 + line16 + line17 + line18                             
-  line0 = "   _       _     _                _      ".colorize(:color => :white).on_blue    
-  line1 = "  | | ___ | |___| |__   __ _ _ __| | __  ".colorize(:color => :white).on_blue
-  line2 = "  | |/ _ \\| / __| '_ \\ / _` | '__| |/ /  ".colorize(:color => :white).on_blue
-  line3 = "  | | (_) | \\__ \  | | | (_| | |  |   <   ".colorize(:color => :white).on_blue 
-  line4 = "  |_|\\___/|_|___/_| |_|\\__,_|_|  |_|\\_\\  ".colorize(:color => :white).on_blue
+  shark = @shark_line0 + @shark_line1 + @shark_line2 + @shark_line3 + @shark_line4 + @shark_line5 + @shark_line6 + @shark_line7 + @shark_line8 + @shark_line9 + @shark_line10 + @shark_line11 + @shark_line12 + @shark_line13 + @shark_line14 + @shark_line15 + @shark_line16 + @shark_line17 + @shark_line18                            
+  shark = shark.colorize(:color => :light_blue)
+  line0 = "   _       _     _                _      "    
+  line1 = "  | | ___ | |___| |__   __ _ _ __| | __  "
+  line2 = "  | |/ _ \\| / __| '_ \\ / _` | '__| |/ /  "
+  line3 = "  | | (_) | \\__ \  | | | (_| | |  |   <   " 
+  line4 = "  |_|\\___/|_|___/_| |_|\\__,_|_|  |_|\\_\\  "
   ascii = line0 + "\n" + line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n\n"
+  ascii = ascii.colorize(:color => :white).on_blue
   PROMPT.say(shark)
   PROMPT.say(ascii)
 end 
