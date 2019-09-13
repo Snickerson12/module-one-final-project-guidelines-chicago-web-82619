@@ -10,6 +10,14 @@ PROMPT = TTY::Prompt.new(active_color: :bright_white)
 ########## HELPER METHODS - BEG ##########
 
 def welcome
+  refresh                   
+  message = "Welcome to LolShark, the #1 stats CLI for League of Legends!".colorize(:color => :light_blue).on_light_white
+  PROMPT.say(message)
+  sleep(2)
+end 
+
+def refresh
+  system("clear")
   line0 = "                         @@@@@@@@@    \n".colorize(:color => :light_blue)
   line1 = "          @@@@@@@@@@@@@@@@@@@@@@      \n".colorize(:color => :light_blue)
   line2 = "      @@@@@@@@@@@@@@@@@@@@@@@@@       \n".colorize(:color => :light_blue)
@@ -29,22 +37,19 @@ def welcome
   line16 = "                   @@@                \n".colorize(:color => :light_blue)
   line17 = "                  @@@                 \n".colorize(:color => :light_blue)
   line18 = "               @@                    \n".colorize(:color => :light_blue)
-                                       
- shark = line0 + line1 + line2+ line3 + line4 + line5 + line6 + line7 + line8 + line9 + line10 + line11 + line12 + line13 + line14 + line15 + line16 + line17 + line18                             
-  line0 = "   _       _     _                _      ".colorize(:color => :light_blue).on_light_white    
-  line1 = "  | | ___ | |___| |__   __ _ _ __| | __  ".colorize(:color => :light_blue).on_light_white
-  line2 = "  | |/ _ \\| / __| '_ \\ / _` | '__| |/ /  ".colorize(:color => :light_blue).on_light_white
-  line3 = "  | | (_) | \\__ \  | | | (_| | |  |   <   ".colorize(:color => :light_blue).on_light_white 
-  line4 = "  |_|\\___/|_|___/_| |_|\\__,_|_|  |_|\\_\\  ".colorize(:color => :light_blue).on_light_white
+  shark = line0 + line1 + line2+ line3 + line4 + line5 + line6 + line7 + line8 + line9 + line10 + line11 + line12 + line13 + line14 + line15 + line16 + line17 + line18                             
+  line0 = "   _       _     _                _      ".colorize(:color => :white).on_blue    
+  line1 = "  | | ___ | |___| |__   __ _ _ __| | __  ".colorize(:color => :white).on_blue
+  line2 = "  | |/ _ \\| / __| '_ \\ / _` | '__| |/ /  ".colorize(:color => :white).on_blue
+  line3 = "  | | (_) | \\__ \  | | | (_| | |  |   <   ".colorize(:color => :white).on_blue 
+  line4 = "  |_|\\___/|_|___/_| |_|\\__,_|_|  |_|\\_\\  ".colorize(:color => :white).on_blue
   ascii = line0 + "\n" + line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n\n"
-  message = "Welcome to LolShark, the #1 stats CLI for League of Legends!".colorize(:color => :light_blue).on_light_white
   PROMPT.say(shark)
   PROMPT.say(ascii)
-  PROMPT.say(message)
 end 
 
 def main_menu
-  system("clear")
+  refresh
   greeting = "Please select a search option!"
   PROMPT.select(greeting) do |menu|
     menu.choice "by summoner name", 1
@@ -96,7 +101,7 @@ def lookup_summoner(summoner_name)
 end
 
 def search_by_summoner
-  system("clear")
+  refresh
   message = "Please enter a summoner name."
   summoner_name = PROMPT.ask(message, required: true, convert: :string)
   summoner = lookup_summoner(summoner_name)
@@ -142,7 +147,7 @@ def search_by_summoner
 end
 
 def search_by_champion
-  system("clear")
+  refresh
   message = "Please enter a champion name."
   champion_name = PROMPT.ask(message, required: true, convert: :string)
   champion = Champion.find_by(name: champion_name)
@@ -172,7 +177,7 @@ def search_by_champion
 end
 
 def search_database
-  system("clear")
+  refresh
   while true  
     instructions = "What would you like to know?"
     choice = PROMPT.select(instructions) do |menu|
